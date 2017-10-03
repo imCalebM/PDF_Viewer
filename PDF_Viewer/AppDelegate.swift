@@ -32,6 +32,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var zoomInButton: NSButton!
     @IBOutlet weak var zoomOutButton: NSButton!
     @IBOutlet weak var resetButton: NSButton!
+    @IBOutlet weak var prevPage: NSButton!
+    @IBOutlet weak var nextPage: NSButton!
+    @IBOutlet weak var goToPage: NSTextField!
+    @IBOutlet weak var pageNumberField: NSTextField!
+    @IBOutlet weak var chooseDocBox: NSComboBox!
 
     
     
@@ -41,7 +46,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     internal var currentPage: Int
     internal var pdfCount: Int
     internal var currentDoc: Int
-    internal var exists: Bool
+    internal var documentOpen: Bool
     internal var searchNumber: Int
     internal var searchValues = [AnyObject]()
     
@@ -53,14 +58,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         currentPage = 1
         pdfCount = 0
         currentDoc = 0
-        exists = false
+        documentOpen = false
         searchNumber = 0
         searchValues = Array()
     }
     
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -68,12 +73,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     
-    @IBAction func openPDF(sender: NSMenuItem) {
-        if let url = NSOpenPanel().selectURL {
-            thePDF.document = PDFClass(url: url.first!)
-            updateWindow(sender: thePDF.document!)
-        }
-    }
+
     
     // Updates title of the window
     func updateWindow(sender: PDFDocument){
@@ -81,6 +81,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     
+    
+    //
+    //  Action functions for UI objects
+    //
+    
+    // Open documents and start a timer to update page number
+    @IBAction func openPDF(sender: NSMenuItem) {
+        if let urls = NSOpenPanel().selectURL {
+            // update page number every 0.1 seconds
+            _ = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updatePageNumber), userInfo: nil, repeats: true)
+            thePDF.document = PDFClass(url: urls.first!)
+            documentOpen = true
+            for doc in urls{
+                chooseDocBox.addItem(withObjectValue: doc.lastPathComponent)
+                documents.append(PDFClass(url: doc)!)
+            }
+            chooseDocBox.stringValue = (urls.first?.lastPathComponent)!
+        }
+    }
     
     // Zoom in action
     @IBAction func zoomIn(_ sender: NSButton) {
@@ -92,11 +111,50 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.thePDF.zoomOut(sender)
     }
     
-    // Reset zoom
+    // Fits the document view to screen
     @IBAction func resetZoom(_ sender: NSButton) {
         self.thePDF.autoScales = true
     }
     
+    // Goes to the previous page
+    @IBAction func goToPrevPage(_ sender: NSButton) {
+        if(thePDF.canGoToPreviousPage()) {
+            thePDF.goToPreviousPage(appWindow)
+        }
+    }
+    
+    // Goes to the next page
+    @IBAction func goToNextPage(_ sender: NSButton) {
+        if(thePDF.canGoToNextPage()) {
+            thePDF.goToNextPage(appWindow)
+        }
+    }
+    
+    // Goes to page number entered
+    @IBAction func goToPageChoice(_ sender: NSTextField) {
+        if documentOpen && goToPage.stringValue != ""{
+            if let choice = Int(goToPage.stringValue) {
+                thePDF.go(to: (thePDF.document?.page(at: choice - 1))!)
+                goToPage.stringValue = ""
+            }
+        }
+    }
+    @IBAction func PDFSelect(_ sender: NSComboBox) {
+        if(chooseDocBox.indexOfSelectedItem >= 0) {
+            let index: Int = chooseDocBox.indexOfSelectedItem
+            thePDF.document = documents[index]
+        }
+    }
+    
+    //
+    //  Helper functions
+    //
+    
+    func updatePageNumber() {
+        let page = thePDF.currentPage
+        let pageNum = (thePDF.document?.index(for: page!))! + 1
+        pageNumberField.stringValue = "Page \(pageNum) of \(thePDF.document?.pageCount ?? 0)"
+    }
     
 }
 

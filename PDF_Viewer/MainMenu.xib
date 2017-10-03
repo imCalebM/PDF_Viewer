@@ -680,72 +680,115 @@
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="" animationBehavior="default" id="MYy-CQ-dU2">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="0.0" y="517" width="800" height="900"/>
+            <rect key="contentRect" x="0.0" y="517" width="800" height="838"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
-            <value key="minSize" type="size" width="800" height="900"/>
+            <value key="minSize" type="size" width="400" height="600"/>
             <view key="contentView" id="Y5B-C0-Cm7">
-                <rect key="frame" x="0.0" y="0.0" width="800" height="900"/>
+                <rect key="frame" x="0.0" y="0.0" width="800" height="838"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <pdfView autoresizesSubviews="NO" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MFm-o9-GVO">
-                        <rect key="frame" x="7" y="173" width="640" height="720"/>
+                        <rect key="frame" x="7" y="8" width="640" height="823"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                     </pdfView>
-                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1nj-hv-Pb8">
-                        <rect key="frame" x="655" y="173" width="135" height="720"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z9E-rj-eUR">
+                        <rect key="frame" x="655" y="8" width="135" height="823"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uSF-qr-W2f">
-                                <rect key="frame" x="49" y="695" width="39" height="17"/>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U59-ji-jFH">
+                                <rect key="frame" x="39" y="784" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Zoom" id="J2d-mW-2jm">
+                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ViP-wj-foL">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="zoomOut:" target="2ue-SK-wd0" id="fuK-E4-fg9"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iTT-dM-BF6">
+                                <rect key="frame" x="78" y="784" width="57" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="smallSquare" title="Fit" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mKq-jb-KUn">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="resetZoom:" target="2ue-SK-wd0" id="Uxx-sd-QnO"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fgt-uo-aPi">
+                                <rect key="frame" x="7" y="754" width="110" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Page 0 of 0" placeholderString="" id="7by-Py-xnA">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CqT-W0-YFS" userLabel="ZoomIn">
-                                <rect key="frame" x="18" y="659" width="28" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0hd-jl-9gs">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1zJ-xE-HzI">
+                                <rect key="frame" x="9" y="721" width="26" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSGoLeftTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KSM-OE-4ST">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
-                                    <string key="keyEquivalent">=</string>
-                                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="zoomIn:" target="2ue-SK-wd0" id="Xn7-ms-Qsk"/>
+                                    <action selector="goToPrevPage:" target="2ue-SK-wd0" id="Co6-16-rkX"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QeO-JI-4ye" userLabel="ZoomOut">
-                                <rect key="frame" x="45" y="659" width="28" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2GT-Jl-RyO">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DpV-Af-zOG">
+                                <rect key="frame" x="34" y="721" width="26" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSGoRightTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CyW-Gm-vtJ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
-                                    <string key="keyEquivalent">-</string>
-                                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="zoomOut:" target="2ue-SK-wd0" id="Stk-Wd-33Y"/>
+                                    <action selector="goToNextPage:" target="2ue-SK-wd0" id="YKY-Bl-d5p"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NMH-bw-mgr">
-                                <rect key="frame" x="72" y="659" width="45" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <buttonCell key="cell" type="square" title="Reset" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Dcw-RS-Xvz">
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFH-vg-zQ0">
+                                <rect key="frame" x="59" y="722" width="68" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Page" drawsBackground="YES" id="e2e-HJ-iAj">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="3oh-3s-UUN"/>
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <action selector="goToPageChoice:" target="2ue-SK-wd0" id="UVE-sG-ZNQ"/>
+                                </connections>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EMz-zw-ic0">
+                                <rect key="frame" x="0.0" y="784" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="seH-R9-ScA">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system" size="12"/>
+                                    <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="resetZoom:" target="2ue-SK-wd0" id="EoA-kd-IPJ"/>
+                                    <action selector="zoomIn:" target="2ue-SK-wd0" id="oZa-fI-pPC"/>
                                 </connections>
                             </button>
+                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fj2-DG-hxc">
+                                <rect key="frame" x="10" y="53" width="120" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="6" id="jXO-WK-veP">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </comboBoxCell>
+                                <connections>
+                                    <action selector="PDFSelect:" target="2ue-SK-wd0" id="ixB-Nn-5tB"/>
+                                </connections>
+                            </comboBox>
                         </subviews>
                     </customView>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="221" y="335"/>
+            <point key="canvasLocation" x="221" y="304"/>
         </window>
         <customObject id="2ue-SK-wd0" customClass="AppDelegate" customModule="PDF_Viewer" customModuleProvider="target">
             <connections>
@@ -753,11 +796,15 @@
                 <outlet property="DocView" destination="MFm-o9-GVO" id="ENX-MI-pfw"/>
                 <outlet property="View" destination="MFm-o9-GVO" id="oDa-di-YoG"/>
                 <outlet property="appWindow" destination="MYy-CQ-dU2" id="Fpo-hA-jRY"/>
-                <outlet property="resetButton" destination="NMH-bw-mgr" id="HNc-F8-5T2"/>
+                <outlet property="chooseDocBox" destination="fj2-DG-hxc" id="tQH-Oj-hle"/>
+                <outlet property="goToPage" destination="OFH-vg-zQ0" id="HLa-ab-gFB"/>
+                <outlet property="nextPage" destination="DpV-Af-zOG" id="vaq-mj-TkF"/>
+                <outlet property="pageNumberField" destination="Fgt-uo-aPi" id="4bG-VE-6Qw"/>
+                <outlet property="prevPage" destination="1zJ-xE-HzI" id="24e-BD-zTt"/>
+                <outlet property="resetButton" destination="iTT-dM-BF6" id="6ia-SF-p3f"/>
                 <outlet property="thePDF" destination="MFm-o9-GVO" id="jUP-eY-vrH"/>
-                <outlet property="zoomIn" destination="CqT-W0-YFS" id="8a2-4W-hcm"/>
-                <outlet property="zoomInButton" destination="CqT-W0-YFS" id="6Ar-Ij-LMg"/>
-                <outlet property="zoomOutButton" destination="QeO-JI-4ye" id="wkK-Wm-e0H"/>
+                <outlet property="zoomInButton" destination="EMz-zw-ic0" id="AEI-XZ-ZoC"/>
+                <outlet property="zoomOutButton" destination="U59-ji-jFH" id="cn7-Qu-bM8"/>
             </connections>
         </customObject>
         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="F4f-Od-d4Y">
@@ -772,6 +819,8 @@
     </objects>
     <resources>
         <image name="NSAddTemplate" width="11" height="11"/>
+        <image name="NSGoLeftTemplate" width="9" height="12"/>
+        <image name="NSGoRightTemplate" width="9" height="12"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
     </resources>
 </document>
