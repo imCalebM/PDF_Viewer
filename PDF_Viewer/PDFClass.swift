@@ -14,19 +14,19 @@ public class PDFClass: PDFDocument {
     
     // Declaring variables
     public var bookmarks: [String]
-    public var notes: [String: String]
+    public var notes: [Int: String]
     
     
     
     override init(){
         bookmarks = Array()
-        notes = [String: String]()
+        notes = [Int: String]()
         super.init()
     }
     
     override init?(url: URL){
         bookmarks = Array()
-        notes = [String: String]()
+        notes = [Int: String]()
         super.init(url: url)
     }
     
