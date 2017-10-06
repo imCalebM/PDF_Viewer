@@ -64,6 +64,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     internal var searchValues = [AnyObject]()
     
     
+    
     // Initialisation of local variables
     override init(){
         pdf = PDFClass()
@@ -80,6 +81,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         leftSearch.isHidden = true
         rightSearch.isHidden = true
+        
+        // Set up the about window
         let aboutSize: NSSize = CGSize(width: 400, height: 400)
         aboutWindow.window?.setIsVisible(false)
         aboutWindow.setFrameSize(aboutSize)
@@ -194,7 +197,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func addToPageNotes(_ sender: NSButton) {
         if documentOpen {
             // Store the note in the document's dictionary with key value being page number
-            print(pageNotes.string!)
             documents[currentDoc].notes[currentPage] = pageNotes.string
         }
     }
@@ -219,7 +221,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // Displays the selected bookmarked page
     @IBAction func goToBookmark(_ sender: NSPopUpButton) {
         let bookmark: String = documents[currentDoc].bookmarks[sender.indexOfSelectedItem]
-        print("\(bookmark)")
         let index = Int(bookmark)!
         thePDF.go(to: (thePDF.document?.page(at: index-1))!)
     }
@@ -265,17 +266,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    
+    // Makes the about window visible
     @IBAction func openAboutWindow(_ sender: Any) {
         aboutWindow.window?.setIsVisible(true)
     }
+    
+    
     /*********************************************************
 
                          Helper functions
 
     **********************************************************/
     
-    // Updates the page number text field and notes field
+    // Updates the page number, page notes, and search information
     // - Called every 0.1s by timer
     func updatePageNumber() {
         let page = thePDF.currentPage
@@ -289,6 +292,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 pageNotes.string = ""
             }
         }
+        // Remove search info if nothing is being searched
+        if searchBox.stringValue == "" && searchCount.stringValue != ""{
+            searchCount.stringValue = ""
+            totalSearchCount.stringValue = ""
+            leftSearch.isHidden = true
+            rightSearch.isHidden = true
+        }
+        // Update the page number
         pageNumberField.stringValue = "Page \(pageNum) of \(thePDF.document?.pageCount ?? 0)"
     }
     

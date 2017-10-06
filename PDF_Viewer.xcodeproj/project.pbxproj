@@ -14,7 +14,6 @@
 		56A212851F79D30500E7F320 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A212841F79D30500E7F320 /* MainMenu.xib */; };
 		56A212881F79D56500E7F320 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56A212871F79D56500E7F320 /* Quartz.framework */; };
 		56A2128A1F79D8FA00E7F320 /* PDFClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A212891F79D8FA00E7F320 /* PDFClass.swift */; };
-		56A2128C1F79EC0B00E7F320 /* doc.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 56A2128B1F79EC0B00E7F320 /* doc.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +47,6 @@
 		56A212841F79D30500E7F320 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		56A212871F79D56500E7F320 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		56A212891F79D8FA00E7F320 /* PDFClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFClass.swift; sourceTree = "<group>"; };
-		56A2128B1F79EC0B00E7F320 /* doc.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = doc.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +103,6 @@
 				56A2125D1F79D28100E7F320 /* Assets.xcassets */,
 				56A212621F79D28100E7F320 /* Info.plist */,
 				56A212841F79D30500E7F320 /* MainMenu.xib */,
-				56A2128B1F79EC0B00E7F320 /* doc.pdf */,
 				56A212891F79D8FA00E7F320 /* PDFClass.swift */,
 			);
 			path = PDF_Viewer;
@@ -244,7 +241,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56A2128C1F79EC0B00E7F320 /* doc.pdf in Resources */,
 				56A2125E1F79D28100E7F320 /* Assets.xcassets in Resources */,
 				56A212851F79D30500E7F320 /* MainMenu.xib in Resources */,
 			);
